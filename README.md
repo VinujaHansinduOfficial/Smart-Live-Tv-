@@ -1,134 +1,124 @@
-# Smart TV — Original IPTV Software with 14-Day Catch-Up
+# Smart TV — Next-Generation Global Television Platform
 
-Modern television & video-on-demand platform featuring **14-Day Catch-Up TV (Replay)**, **Movies & TV Series (VOD)**, **Local DVR & Scheduled Recordings**, **IPTVnator-grade Video Player Controls**, **Universal Smart Search**, **Command Palette**, **EPG Electronic Program Guide**, **Gemini AI Discovery Assistant**, **Voice Control**, and **Multi-View Television**.
-
-Built with a high-performance **FastAPI (Python 3.12) + SQLite (FTS5 & WAL)** backend and a responsive **React 19 + TypeScript + Tailwind CSS** frontend.
-
----
-
-## 🌟 Key Features
-
-| Category | Route / Shortcut | Description |
-| --- | --- | --- |
-| **14-Day Catch-Up TV (Replay)** | `/catchup` | Rolling 14-day date strip (Today, Yesterday, ..., 14 days ago) with 4 availability states (`Provider Archive`, `Local DVR`, `Unavailable`, `Outside 14-Day Window`), automated timeshift URL resolver, and 1-click replay player. |
-| **VOD: Movies & TV Series** | `/vod` | On-demand catalog with hero showcase, "Continue Watching" row with progress resumption, genre filters, and TV series season/episode selectors. |
-| **Local DVR & Recordings** | `/recordings` | Instant live stream capture (15–180 min), scheduled future EPG broadcast recordings, disk storage meter, and 14-day retention cleanup manager. |
-| **Advanced Video Player** | Player controls | IPTVnator-grade player with time-scrubbing seek bar, quality renditions (1080p, 720p, etc.), audio & subtitle tracks, playback speed (0.5x–2x), live DVR record button, stream diagnostics HUD, and external launchers (`vlc://`, `mpv://`). |
-| **Command Palette** | `Ctrl+K` / `Cmd+K` | Quick keyboard command launcher to jump to any channel, page, or playback action (Mute, Fullscreen, Record, AI Assistant). |
-| **IPTV Sources Management** | `/settings` | Ingest and parse extended M3U/M3U8 playlists (URL or pasted text), Xtream Codes accounts, and Stalker/Ministra portals with catch-up configurations. |
-| **Universal Smart Search** | `/search` | 4-tab unified search across Live Channels, Program Guide (Now & Next 24h), 14-Day Catch-Up Archives, and VOD Movies & Series. |
-| **Voice-Controlled TV** | Header mic / `V` | Natural speech recognition with instant local commands ("Play BBC News", "TV Guide", "Mute", "Volume up") and AI intent parsing. |
-| **AI TV Discovery Assistant** | `AI Find` / `A` | Grounded Google Gemini AI assistant with controlled search tools over the live catalog & schedules; hallucination-free discovery. |
-| **Multi-View Television** | `/multiview` | Watch 2 to 4 channels simultaneously in Dual, Triple, Quad, or Focus layouts with audio switching and custom presets. |
-| **World TV Explorer** | `/world` | Geographic discovery across Europe, Americas, Asia, Middle East, Africa, and Oceania with country flags, channel counts, and live broadcasts. |
-| **TV Guide Grid & Schedule** | `/guide` | Channels × time grid, now-line, 2-hour paging, category & favourites filters. |
-| **Cross-Device Sync & Remote** | `/remote` or Pair | Pair mobile phones to TV screen with 6-digit code (`TV-XXXX`); turn phone into a live Smart TV Remote with D-pad, channel/volume controls, and voice mic. |
-| **Household Profiles** | Profile picker | Separate watch history, favorites, kids profiles, category blocklists, and 4-digit PIN security. |
+> **Product Overview & Current Capability Status**  
+> An intelligent, user-friendly television and on-demand entertainment experience designed for modern screens, living rooms, and personal devices.
 
 ---
 
-## 🚀 Getting Started
+## 📺 Overview
 
-### Prerequisites
-- Python 3.11+
-- Node.js 20+
+**Smart TV** reimagines traditional television watching. Instead of forcing users to scroll through overwhelming, unorganized channel playlists or memorize technical channel names, the platform provides a smart, responsive television experience.
 
-### 1. Backend Setup
-```bash
-cd backend
-pip install -r requirements.txt
-
-# Initial catalog sync and optional demo guide
-python -m app.sync                 # sync public iptv-org catalog
-python -m app.epg demo             # load demo EPG listings
-
-# Run FastAPI server
-uvicorn app.main:app --port 8000
-```
-
-### 2. Frontend Setup
-```bash
-cd frontend
-npm install
-npm run dev                        # Launches at http://localhost:5173 (proxies API to :8000)
-```
-
-For production builds:
-```bash
-cd frontend
-npm run build                      # Compiles to frontend/dist (served directly by FastAPI at http://localhost:8000)
-```
-
-### 3. Run Backend Test Suite
-```bash
-cd backend
-python -m pytest                   # 31 unit & integration tests pass (100% passing)
-```
+Users can effortlessly discover worldwide channels, catch up on programs broadcast over the rolling past **7 days (168 hours)**, download individual shows for offline viewing on their computers, watch multiple live games or news broadcasts simultaneously on a split screen, and navigate using voice or their smartphone as a TV remote.
 
 ---
 
-## ⌨️ TV & Keyboard Navigation
+## 🌟 The IPTV & Television Experience
 
-| Key | Action |
-| --- | --- |
-| `Ctrl+K` / `Cmd+K` | Open Universal Command Palette |
-| `Space` | Play / Pause active stream |
-| `M` | Mute / Unmute audio |
-| `F` | Toggle Fullscreen |
-| `←` / `→` | Seek backward / forward 10 seconds |
-| `↑` / `↓` | Volume up / down |
-| `V` | Trigger Voice Command microphone |
-| `A` | Open AI TV Discovery Assistant |
-| `G` | Jump to TV Guide |
-| `?` | Show 10-Foot Remote & Shortcut cheatsheet |
+### 1. Live Channel Viewing & Multi-Feed Playback
+- **Instant Channel Tuning**: Smooth, immediate switching across global live broadcasts categorized by genre, language, and country.
+- **Multi-Source Failover**: When a channel has alternative broadcast feeds (such as high-definition 1080p, standard-definition 720p, or backup stream links), users can switch sources on the fly with a single click.
+- **Channel Branding & Information**: High-resolution network logos, country flags, genre badges, and live stream status indicators.
+- **External Player Hand-off**: Quick-launch buttons to open any live stream directly in **VLC** or **MPV**, or copy the direct stream link with one tap.
+
+### 2. Automatic 7-Day (168-Hour) Catch-Up TV (Replay)
+- **Rolling 7-Day Replay Window**: Browse and watch past television broadcasts from Today, Yesterday, and up to 6 days ago.
+- **Zero Local Disk Bloat**: Streams past broadcasts directly from upstream network archives on demand without filling up your computer's hard drive.
+- **Expiry Countdown Badges**: Clear visual badges show exactly how many hours or days remain before a past broadcast expires from the archive.
+- **Restart from Beginning**: If you join a live show late, restart it from the very beginning with a single click whenever replay is available.
+- **Continue Watching**: Automatically remembers where you paused an archived show so you can pick up right where you left off.
+
+### 3. On-Demand Program Downloads & Offline Playback
+- **One-Click Download Program**: Save any permitted television show or live broadcast block directly to your computer.
+- **Comprehensive Download Manager**: Real-time progress monitoring, transfer speeds, file sizes, and the ability to pause, resume, retry, or cancel downloads.
+- **Offline TV Player**: Watch downloaded shows anywhere—on flights, road trips, or when disconnected from the internet—with full playback controls.
+- **Smart Storage Management**: Set storage quotas, select download folders, and enable automatic cleanup of older downloads when disk space runs low.
+
+### 4. Electronic Program Guide (EPG)
+- **Multi-Channel Timeline Grid**: A comprehensive television guide displaying channels alongside horizontal timeline schedules.
+- **Live "Playing Now" Progress**: Dynamic progress indicators show how much of the current show has aired and how much time remains.
+- **Now & Next Previews**: Instant program title and description previews across all channels in the channel drawer.
+- **Broadcast Reminders**: Set notification reminders for upcoming shows so you never miss your favorite programs or live events.
+
+### 5. Advanced Living-Room Video Controls
+- **Precision Seek Bar**: Smooth scrubbing through past broadcasts, catch-up programs, and recorded videos.
+- **Multi-Language Audio & Subtitles**: Easily toggle between available audio language tracks and subtitle options.
+- **AI Live Speech Captions**: Generates on-screen subtitles in real time for broadcasts that lack closed captioning.
+- **Dynamic Audio Normalizer**: Automatically compresses audio peaks and lifts quiet speech so volume stays consistent between dialogue and loud commercials.
+- **Sleep Timer**: Set the television to stop playing automatically after 15, 30, 45, 60, or 90 minutes.
+- **Picture-in-Picture (PiP)**: Keep your channel playing in a compact, floating window while browsing other parts of the platform or multitasking on your computer.
 
 ---
 
-## 🏗️ Architecture
+## 🧭 Discovery, Exploration & Multitasking
 
-```
-smart-iptv/
-├── backend/
-│   ├── app/
-│   │   ├── main.py                     # FastAPI application entrypoint & static mounting
-│   │   ├── db.py                       # SQLite connection, WAL mode, schema migrations & FTS5
-│   │   ├── config.py                   # 14-day retention (336h), paths & constants
-│   │   ├── catchup.py                  # 14-day rolling window & replay availability resolver
-│   │   ├── services.py                 # Channel filtering, permissions & serialization
-│   │   ├── sync.py                     # iptv-org sync pipeline
-│   │   ├── ai.py                       # Google Gemini API assistant with tool grounding
-│   │   ├── routers/
-│   │   │   ├── catchup.py              # /api/catchup (days, schedule, resolve)
-│   │   │   ├── vod.py                  # /api/vod (featured, movies, series, continue, progress)
-│   │   │   ├── recordings.py           # /api/recordings (instant record, schedule, storage, cleanup)
-│   │   │   ├── sources.py              # /api/sources (M3U, Xtream Codes, Stalker portals)
-│   │   │   ├── catalog.py              # /api/channels, /api/meta
-│   │   │   ├── guide.py                # /api/guide/grid, /api/guide/channel
-│   │   │   ├── multiview.py            # /api/me/multiview
-│   │   │   ├── world.py                # /api/world
-│   │   │   ├── sync.py                 # /api/sync (device pair & remote control)
-│   │   │   └── ai.py                   # /api/ai (discover, voice)
-│   │   └── epg/                        # XMLTV parser, grabber & demo listings
-│   └── tests/                          # 31 pytest integration tests
-└── frontend/
-    ├── src/
-    │   ├── App.tsx                     # Router, header, navigation & command palette
-    │   ├── api.ts                      # Fully typed API client
-    │   ├── types.ts                    # TypeScript domain interfaces
-    │   ├── components/
-    │   │   ├── Player.tsx              # IPTVnator-grade player (seek, HUD, quality, speed, audio/sub)
-    │   │   ├── CommandPalette.tsx      # Ctrl+K global navigation palette
-    │   │   ├── VoiceControl.tsx        # Voice command microphone
-    │   │   ├── AiAssistant.tsx         # Gemini AI chat interface
-    │   │   └── TvRemoteOverlay.tsx     # 10-foot TV mode overlay
-    │   └── views/
-    │       ├── Catchup.tsx             # 14-Day Catch-Up TV Replay interface
-    │       ├── Vod.tsx                 # VOD Movies & TV Series with Continue Watching
-    │       ├── Recordings.tsx          # Local DVR, storage meter & retention cleanup
-    │       ├── Watch.tsx               # Primary live TV player & channel browsing
-    │       ├── Guide.tsx               # Multi-channel EPG grid
-    │       ├── Search.tsx              # 4-tab universal search
-    │       ├── MultiView.tsx           # 2-4 channel multi-view
-    │       ├── WorldExplorer.tsx       # Geographic country TV explorer
-    │       └── Settings.tsx            # IPTV sources, profiles, and EPG configuration
-```
+### Universal Smart Search
+- Search across live channels, program schedules, 7-day catch-up archives, countries, and categories in real time.
+- Filter by category: **News**, **Sports**, **Movies**, **Documentaries**, **Kids**, **Music**, and **Entertainment**.
+
+### World TV Explorer
+- Explore television visually by global region: **Europe**, **Americas**, **Asia**, **Middle East**, **Africa**, and **Oceania**.
+- Discover channels by nation with flags, channel counts, and regional program schedules.
+
+### Multi-View Television (Split-Screen)
+- Watch **2, 3, or 4 channels simultaneously** on a single screen.
+- Choose between **Dual**, **Triple**, **Quad**, or **Focus** (one large main channel with side previews) layouts.
+- Switch audio between screens instantly—ideal for following multiple live sports matches or breaking news events simultaneously.
+
+---
+
+## 🍿 On-Demand Entertainment & Social TV
+
+### Movies & TV Series (VOD)
+- An organized catalog of movies and series with posters, summaries, and genre filters.
+- Seamless season and episode selectors for television series.
+- Dedicated "Continue Watching" carousel that remembers your exact playback position across devices.
+
+### Virtual Watch Parties
+- Create synchronized viewing rooms to watch live television and sporting events with friends and family.
+- Real-time video playback synchronization and an integrated text chat room.
+
+### Universal Watchlist & Personal Favorites
+- One-click bookmarking of channels and television series to a universal watchlist.
+- Keep quick-access channel favorites tied to your personal viewing profile.
+
+---
+
+## 🤖 Smart Living-Room Controls
+
+### Smartphone TV Remote Companion
+- Pair any smartphone or tablet to your screen using a simple 6-digit code.
+- Transforms your phone into a full Smart TV Remote with a directional navigation pad, volume rocker, channel switcher, and voice input button.
+
+### Voice Control
+- Speak natural commands to navigate the TV: *"Play BBC News"*, *"Open TV Guide"*, *"Mute"*, or *"Volume up"*.
+
+### AI TV Assistant
+- Ask natural questions about television programming: *"What family movies are on tonight?"* or *"Find international news broadcasts"*.
+
+### Household Profiles & Parental Controls
+- Individual profiles for each family member with separate watch histories, favorites, and continue-watching lists.
+- **Kids Mode**: Restricts viewing to age-appropriate channels with optional 4-digit PIN protection.
+
+---
+
+## 📊 Current Feature Readiness
+
+| Feature Area | User Capability | Status |
+| :--- | :--- | :---: |
+| **Live TV Player** | HD streaming, multi-source failover, audio/subtitles, audio normalizer, sleep timer | ✅ **Active** |
+| **7-Day Replay (Catch-Up)** | Rolling 168-hour archive streaming, expiry countdowns, restart from beginning | ✅ **Active** |
+| **Download Program** | On-demand downloads, download manager (pause/resume/retry), offline playback | ✅ **Active** |
+| **TV Guide (EPG)** | Multi-channel schedule grid, Now/Next indicators, live progress bars, reminders | ✅ **Active** |
+| **Multi-View** | Simultaneous playback of 2 to 4 live channels with audio switching | ✅ **Active** |
+| **Smart Search & World TV** | Search by channel/program/country/genre, regional world map explorer | ✅ **Active** |
+| **Local DVR** | One-click instant stream recording (60 min) and scheduled future recordings | ✅ **Active** |
+| **VOD Movies & Series** | On-demand catalog, episode selector, continue watching with resume | ✅ **Active** |
+| **Phone Remote Companion** | 6-digit wireless pairing, mobile directional controls, volume & tuning | ✅ **Active** |
+| **Watch Parties** | Synced playback rooms with live chat | ✅ **Active** |
+| **Household Profiles** | Personalized profiles, favorites, watch history, and Kids PIN protection | ✅ **Active** |
+| **Voice & AI Assistant** | Spoken TV commands and conversational program discovery | ✅ **Active** |
+
+---
+
+*Smart TV — An independent next-generation television experience.*
